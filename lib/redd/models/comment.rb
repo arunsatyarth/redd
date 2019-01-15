@@ -38,8 +38,8 @@ module Redd
           else
             Models::Listing.new(@client, children: [], after: nil, before: nil)
           end
-        @attributes[:author] = User.from_id(@client, @attributes.fetch(:author))
-        @attributes[:subreddit] = Subreddit.from_id(@client, @attributes.fetch(:subreddit))
+        @attributes[:author] = User.from_id(@client, @attributes.fetch(:author)) if @attributes[:author]
+        @attributes[:subreddit] = Subreddit.from_id(@client, @attributes.fetch(:subreddit)) if @attributes[:subreddit]
       end
 
       def default_loader
